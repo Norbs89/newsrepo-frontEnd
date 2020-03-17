@@ -6,7 +6,9 @@ import DisplayNavBar from "./components/NavBar";
 import HomePage from "./components/HomePage";
 import DisplayAllArticles from "./components/AllArticles";
 import ArticlesByTopic from "./components/ArticlesByTopic";
+import CommentsByArticleId from "./components/CommentsByArticle";
 
+//turn this into class, have a hardcoded user here for now to be able to post a comment//
 function App() {
   return (
     <div className="App">
@@ -15,7 +17,7 @@ function App() {
         <HomePage path="/" />
         <DisplayAllArticles path="/articles" />
         <ArticlesByTopic path="/topic/:topic" />
-        {/* /articles?topic=:topic */}
+        <CommentsByArticleId path="/articles/:article_id/comments" />
       </Router>
     </div>
   );

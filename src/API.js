@@ -22,6 +22,10 @@ const GetArticlesByTopic = topic => {
   });
 };
 
+const GetCommentsByArticleId = URI => {
+  return axios.get(`${baseURL}${URI}`);
+};
+
 const AllTopicsRequest = () => {
   return axios.get(`${baseURL}/topics`);
 };
@@ -39,5 +43,6 @@ export {
   AllArticlesRequest,
   ArticleByIdRequest,
   AllTopicsRequest,
-  GetArticlesByTopic
+  GetArticlesByTopic,
+  GetCommentsByArticleId
 };

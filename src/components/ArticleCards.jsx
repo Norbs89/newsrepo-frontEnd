@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Accordion, Card, Container } from "react-bootstrap";
 import { ArticleByIdRequest } from "../API";
+import { Link } from "@reach/router";
 
 class ArticleById extends Component {
   state = { article: [], isLoaded: false };
@@ -45,6 +46,10 @@ class ArticleById extends Component {
                 <p>{article.body}</p>
                 <p>Author: {article.author}</p>
                 <p>Created at: {article.created_at}</p>
+                <p>Comments: {article.comment_count}</p>
+                <Link to={`/articles/${article.article_id}/comments`}>
+                  Click to see comments
+                </Link>
               </Card.Body>
             </Accordion.Collapse>
           </Card>
