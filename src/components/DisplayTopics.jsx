@@ -4,6 +4,7 @@ import { Card, Container, Row, Col } from "react-bootstrap";
 import coding from "../images/coding.jpg";
 import cooking from "../images/cooking.jpg";
 import football from "../images/football.jpg";
+import { Link } from "@reach/router";
 
 class DisplayTopics extends React.Component {
   state = {
@@ -37,15 +38,17 @@ class DisplayTopics extends React.Component {
           {topics.map(topic => {
             return (
               <Col key={topic.slug}>
-                <Card className="bg-dark text-white">
-                  <Card.Img src={this.state.images[topic.slug]} />
-                  <Card.ImgOverlay className="card-allText">
-                    <Card.Title className="cardText">{topic.slug}</Card.Title>
-                    <Card.Text className="cardText">
-                      {topic.description}
-                    </Card.Text>
-                  </Card.ImgOverlay>
-                </Card>
+                <Link to={`/topic/${topic.slug}`}>
+                  <Card className="bg-dark text-white">
+                    <Card.Img src={this.state.images[topic.slug]} />
+                    <Card.ImgOverlay className="card-allText">
+                      <Card.Title className="cardText">{topic.slug}</Card.Title>
+                      <Card.Text className="cardText">
+                        {topic.description}
+                      </Card.Text>
+                    </Card.ImgOverlay>
+                  </Card>
+                </Link>
               </Col>
             );
           })}

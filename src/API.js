@@ -2,12 +2,24 @@ import axios from "axios";
 
 const baseURL = "https://nc-news-hosting-app.herokuapp.com/api";
 
-const AllArticlesRequest = () => {
-  return axios.get(`${baseURL}/articles`);
+const AllArticlesRequest = query => {
+  return axios.get(`${baseURL}/articles`, {
+    params: {
+      topic: query
+    }
+  });
 };
 
 const ArticleByIdRequest = article_id => {
   return axios.get(`${baseURL}/articles/${article_id}`);
+};
+
+const GetArticlesByTopic = topic => {
+  return axios.get(`${baseURL}/articles`, {
+    params: {
+      topic
+    }
+  });
 };
 
 const AllTopicsRequest = () => {
@@ -23,4 +35,9 @@ const AllTopicsRequest = () => {
 // sortBy:
 // }
 
-export { AllArticlesRequest, ArticleByIdRequest, AllTopicsRequest };
+export {
+  AllArticlesRequest,
+  ArticleByIdRequest,
+  AllTopicsRequest,
+  GetArticlesByTopic
+};
