@@ -6,4 +6,21 @@ const AllArticlesRequest = () => {
   return axios.get(`${baseURL}/articles`);
 };
 
-export default AllArticlesRequest;
+const ArticleByIdRequest = article_id => {
+  return axios.get(`${baseURL}/articles/${article_id}`);
+};
+
+const AllTopicsRequest = () => {
+  return axios.get(`${baseURL}/topics`);
+};
+
+// {
+//   params: query
+// }
+
+// query {
+// topic: ;'coding',
+// sortBy:
+// }
+
+export { AllArticlesRequest, ArticleByIdRequest, AllTopicsRequest };

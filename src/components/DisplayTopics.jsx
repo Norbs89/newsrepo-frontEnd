@@ -1,13 +1,18 @@
 import React from "react";
-import axios from "axios";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+import { AllTopicsRequest } from "../API";
+import { Card, Container, Row, Col } from "react-bootstrap";
+import coding from "../images/coding.jpg";
+import cooking from "../images/cooking.jpg";
+import football from "../images/football.jpg";
 
 class DisplayTopics extends React.Component {
   state = {
-    topics: []
+    topics: [],
+    images: {
+      coding: coding,
+      cooking: cooking,
+      football: football
+    }
   };
 
   componentDidMount() {
@@ -15,8 +20,7 @@ class DisplayTopics extends React.Component {
   }
 
   fetchTopics = () => {
-    axios
-      .get("https://nc-news-hosting-app.herokuapp.com/api/topics")
+    AllTopicsRequest()
       .then(({ data }) => {
         this.setState({ topics: data.topics });
       })
@@ -34,10 +38,7 @@ class DisplayTopics extends React.Component {
             return (
               <Col key={topic.slug}>
                 <Card className="bg-dark text-white">
-                  <Card.Img
-                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTtMNZsZek6YaV4nsGlsAZMBrwDDG8YjKqQo28jSPBZDGAB_d9C"
-                    alt="Card image"
-                  />
+                  <Card.Img src={this.state.images[topic.slug]} />
                   <Card.ImgOverlay className="card-allText">
                     <Card.Title className="cardText">{topic.slug}</Card.Title>
                     <Card.Text className="cardText">

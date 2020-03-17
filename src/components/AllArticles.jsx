@@ -1,7 +1,6 @@
 import React from "react";
-import axios from "axios";
 import ArticleById from "./ArticleCards";
-import AllArticlesRequest from "../API";
+import { AllArticlesRequest } from "../API";
 
 class DisplayAllArticles extends React.Component {
   state = { articles: [], isLoaded: false, articleById: [] };
@@ -21,7 +20,7 @@ class DisplayAllArticles extends React.Component {
     return (
       <div>
         {articles.map(article => {
-          return <ArticleById article={article} />;
+          return <ArticleById article={article} key={article.article_id} />;
         })}
       </div>
     );

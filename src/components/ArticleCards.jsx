@@ -1,21 +1,14 @@
 import React, { Component } from "react";
-import axios from "axios";
-import Accordion from "react-bootstrap/Accordion";
-import Card from "react-bootstrap/Card";
-import Container from "react-bootstrap/Container";
+import { Accordion, Card, Container } from "react-bootstrap";
+import { ArticleByIdRequest } from "../API";
 
 class ArticleById extends Component {
   state = { article: [], isLoaded: false };
 
   fetchArticleById = article_id => {
-    axios
-      .get(
-        `https://nc-news-hosting-app.herokuapp.com/api/articles/${article_id}`
-      )
-      .then(res => {
-        console.log("request happened");
-        this.setState({ article: res.data.article, isLoaded: true });
-      });
+    ArticleByIdRequest(article_id).then(res => {
+      this.setState({ article: res.data.article, isLoaded: true });
+    });
   };
 
   handleClick = article_id => {
