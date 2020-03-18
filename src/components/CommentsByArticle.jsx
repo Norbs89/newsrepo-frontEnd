@@ -14,8 +14,10 @@ class CommentsByArticleId extends Component {
     }
   }
 
-  commentPosted = boolean => {
-    this.setState({ isPosted: boolean });
+  commentPosted = () => {
+    this.setState(currentState => {
+      return { ...currentState, isPosted: !currentState.isPosted };
+    });
   };
 
   componentDidMount() {

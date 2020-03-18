@@ -3,7 +3,7 @@ import { Form } from "react-bootstrap";
 import { PostCommentRequest } from "../API";
 
 class PostComment extends Component {
-  state = { body: "", isPosted: false };
+  state = { body: "" };
 
   handleInput = value => {
     this.setState(currentState => {
@@ -18,16 +18,15 @@ class PostComment extends Component {
     const { URI, currentUser, commentPosted } = this.props;
     e.preventDefault();
     PostCommentRequest(URI, currentUser, this.state.body).then(res => {
-      commentPosted(true);
+      commentPosted();
       this.setState({
-        body: "",
-        isPosted: true
+        body: ""
       });
     });
   };
 
   render() {
-    const { isPosted, body } = this.state;
+    const { body } = this.state;
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
@@ -39,9 +38,9 @@ class PostComment extends Component {
               placeholder="enter your comments here..."
               onChange={e => this.handleInput(e.target.value)}
               value={body}
+              required
             />
             <button type="submit">Post a comment</button>
-            {isPosted && <p>Your comment has been posted!</p>}
           </Form.Group>
         </Form>
       </>

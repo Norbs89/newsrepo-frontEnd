@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, ListGroup } from "react-bootstrap";
+import CommentVoter from "./CommentVoter";
 
 const CommentCards = props => {
   const { comment } = props;
@@ -13,7 +14,7 @@ const CommentCards = props => {
         <br />
         <Card.Text>{comment.body}</Card.Text>
         <br />
-        <Card.Text>{comment.votes}</Card.Text>
+        <CommentVoter votes={comment.votes} comment_id={comment.comment_id} />
       </ListGroup.Item>
     </>
   );
