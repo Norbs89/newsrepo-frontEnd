@@ -13,6 +13,8 @@ import ErrorHandling from "./components/ErrorHandling";
 class App extends React.Component {
   state = { currentUser: "jessjelly" };
 
+  updateUser = () => {};
+
   render() {
     const { currentUser } = this.state;
     return (

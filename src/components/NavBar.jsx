@@ -2,7 +2,11 @@ import React from "react";
 import Navbar from "react-bootstrap/Navbar";
 import { Link } from "@reach/router";
 
-const DisplayNavBar = currentUser => {
+const DisplayNavBar = props => {
+  // function onSelect() {
+  //   props.updateUser(value)
+  // }
+
   return (
     <Navbar bg="dark" variant="dark" sticky="top">
       <Link to="/">
@@ -12,7 +16,7 @@ const DisplayNavBar = currentUser => {
         <Link to="/articles">All Articles</Link>
       </Navbar.Text>
       <Navbar.Collapse className="justify-content-end">
-        <Navbar.Text>Signed in as: {currentUser.currentUser}</Navbar.Text>
+        <Navbar.Text>Signed in as: {props.currentUser}</Navbar.Text>
       </Navbar.Collapse>
     </Navbar>
   );

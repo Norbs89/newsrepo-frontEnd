@@ -30,6 +30,10 @@ const AllTopicsRequest = () => {
   return axios.get(`${baseURL}/topics`);
 };
 
+const PostCommentRequest = (URI, user, body) => {
+  return axios.post(`${baseURL}${URI}`, { username: user, body: body });
+};
+
 // {
 //   params: query
 // }
@@ -44,5 +48,6 @@ export {
   ArticleByIdRequest,
   AllTopicsRequest,
   GetArticlesByTopic,
-  GetCommentsByArticleId
+  GetCommentsByArticleId,
+  PostCommentRequest
 };

@@ -4,8 +4,19 @@ import { Card, Container, ListGroup } from "react-bootstrap";
 import CommentCards from "./CommentCards";
 import PostComment from "./PostComment";
 
+//if isPosted true, rerender comments on cDU
 class CommentsByArticleId extends Component {
-  state = { comments: [], isLoading: false, article: [] };
+  state = { comments: [], isLoading: false, article: [], isPosted: false };
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.isPosted !== this.state.isPosted) {
+      this.fetchComments(this.props.uri);
+    }
+  }
+
+  commentPosted = boolean => {
+    this.setState({ isPosted: boolean });
+  };
 
   componentDidMount() {
     this.fetchComments(this.props.uri);
@@ -35,7 +46,11 @@ class CommentsByArticleId extends Component {
             <Card.Text>{article.votes}</Card.Text>
             <br />
             <Card.Title>Comments:</Card.Title>
-            <PostComment currentUser={this.props.currentUser} />
+            <PostComment
+              currentUser={this.props.currentUser}
+              URI={this.props.uri}
+              commentPosted={this.commentPosted}
+            />
             <ListGroup variant="flush">
               {comments.map(comment => {
                 return (
