@@ -35,8 +35,11 @@ const PostCommentRequest = (URI, user, body) => {
 };
 
 const patchVotes = (id, vote, url) => {
-  console.log("vote updated");
   return axios.patch(`${baseURL}/${url}/${id}`, { inc_votes: vote });
+};
+
+const DeleteCommentRequest = id => {
+  return axios.delete(`${baseURL}/comments/${id}`);
 };
 
 export {
@@ -46,5 +49,6 @@ export {
   GetArticlesByTopic,
   GetCommentsByArticleId,
   PostCommentRequest,
-  patchVotes
+  patchVotes,
+  DeleteCommentRequest
 };

@@ -3,7 +3,7 @@ import { Card, ListGroup } from "react-bootstrap";
 import Voter from "./Voter";
 
 const CommentCards = props => {
-  const { comment } = props;
+  const { comment, user, deleteComment } = props;
   return (
     <>
       <ListGroup.Item>
@@ -15,6 +15,15 @@ const CommentCards = props => {
         <Card.Text>{comment.body}</Card.Text>
         <br />
         <Voter votes={comment.votes} id={comment.comment_id} url={"comments"} />
+        {user === comment.author && (
+          <button
+            onClick={e => {
+              deleteComment(comment.comment_id);
+            }}
+          >
+            Delete Comment
+          </button>
+        )}
       </ListGroup.Item>
     </>
   );
