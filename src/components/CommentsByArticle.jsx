@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { GetCommentsByArticleId, ArticleByIdRequest } from "../API";
 import { Card, Container, ListGroup } from "react-bootstrap";
 import CommentCards from "./CommentCards";
+import PostComment from "./PostComment";
 
 class CommentsByArticleId extends Component {
   state = { comments: [], isLoading: false, article: [] };
@@ -34,6 +35,7 @@ class CommentsByArticleId extends Component {
             <Card.Text>{article.votes}</Card.Text>
             <br />
             <Card.Title>Comments:</Card.Title>
+            <PostComment currentUser={this.props.currentUser} />
             <ListGroup variant="flush">
               {comments.map(comment => {
                 return (
