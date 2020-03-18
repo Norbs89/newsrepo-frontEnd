@@ -3,9 +3,10 @@ import { Accordion, Card, Container } from "react-bootstrap";
 import { ArticleByIdRequest } from "../API";
 import { Link } from "@reach/router";
 import ErrorHandling from "./ErrorHandling";
+import Voter from "./Voter";
 
 class ArticleById extends Component {
-  state = { article: [], isLoaded: false, error: null };
+  state = { article: null, isLoaded: false, error: null };
 
   fetchArticleById = article_id => {
     ArticleByIdRequest(article_id)
@@ -27,13 +28,13 @@ class ArticleById extends Component {
       this.fetchArticleById(article_id);
     } else {
       this.setState(currentState => {
-        return { isLoaded: !currentState.isLoaded };
+        return { ...currentState, isLoaded: !currentState.isLoaded };
       });
     }
   };
 
   render() {
-    const { article, error } = this.state;
+    const { article, error, isLoaded } = this.state;
     if (error !== null) {
       return <ErrorHandling status={error.status} msg={error.msg} />;
     }
@@ -51,17 +52,30 @@ class ArticleById extends Component {
               >
                 Click to read article
               </button>
-              <p>{this.props.article.votes}</p>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
               <Card.Body>
-                <p>{article.body}</p>
-                <p>Author: {article.author}</p>
-                <p>Created at: {article.created_at}</p>
-                <p>Comments: {article.comment_count}</p>
-                <Link to={`/articles/${article.article_id}/comments`}>
-                  Click to see comments
-                </Link>
+                {isLoaded ? (
+                  <>
+                    <p>{article.body}</p>
+                    <p>Author: {article.author}</p>
+                    <p>Created at: {article.created_at}</p>
+                    <p>
+                      Votes:
+                      <Voter
+                        votes={article.votes}
+                        id={article.article_id}
+                        url={"articles"}
+                      />
+                    </p>
+                    <p>Comments: {article.comment_count}</p>
+                    <Link to={`/articles/${article.article_id}/comments`}>
+                      Click to see comments
+                    </Link>
+                  </>
+                ) : (
+                  <p>Loading...</p>
+                )}
               </Card.Body>
             </Accordion.Collapse>
           </Card>

@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, ListGroup } from "react-bootstrap";
-import CommentVoter from "./CommentVoter";
+import Voter from "./Voter";
 
 const CommentCards = props => {
   const { comment } = props;
@@ -14,7 +14,7 @@ const CommentCards = props => {
         <br />
         <Card.Text>{comment.body}</Card.Text>
         <br />
-        <CommentVoter votes={comment.votes} comment_id={comment.comment_id} />
+        <Voter votes={comment.votes} id={comment.comment_id} url={"comments"} />
       </ListGroup.Item>
     </>
   );

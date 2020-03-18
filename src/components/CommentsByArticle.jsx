@@ -6,7 +6,7 @@ import PostComment from "./PostComment";
 
 //if isPosted true, rerender comments on cDU
 class CommentsByArticleId extends Component {
-  state = { comments: [], isLoading: false, article: [], isPosted: false };
+  state = { comments: [], isLoaded: false, article: [], isPosted: false };
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.isPosted !== this.state.isPosted) {
@@ -33,13 +33,20 @@ class CommentsByArticleId extends Component {
 
   fetchArticleById = article_id => {
     ArticleByIdRequest(article_id).then(res => {
-      this.setState({ article: res.data.article });
+      this.setState(currentState => {
+        return {
+          ...currentState,
+          article: res.data.article,
+          isLoaded: true
+        };
+      });
     });
   };
 
   render() {
-    const { article, comments } = this.state;
-    return (
+    const { article, comments, isLoaded } = this.state;
+
+    return isLoaded ? (
       <div>
         <Container>
           <Card>
@@ -63,6 +70,8 @@ class CommentsByArticleId extends Component {
           </Card>
         </Container>
       </div>
+    ) : (
+      <p>Loading...</p>
     );
   }
 }

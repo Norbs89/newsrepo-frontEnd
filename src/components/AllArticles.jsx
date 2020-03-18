@@ -3,7 +3,7 @@ import ArticleById from "./ArticleCards";
 import { AllArticlesRequest } from "../API";
 
 class DisplayAllArticles extends React.Component {
-  state = { articles: [], isLoaded: false, articleById: [] };
+  state = { articles: null, isLoaded: false, articleById: [] };
 
   componentDidMount() {
     this.fetchAllArticles();
@@ -11,18 +11,26 @@ class DisplayAllArticles extends React.Component {
 
   fetchAllArticles = () => {
     AllArticlesRequest().then(({ data }) => {
-      this.setState({ articles: data.articles });
+      this.setState(currentState => {
+        return {
+          ...currentState,
+          articles: data.articles,
+          isLoaded: true
+        };
+      });
     });
   };
 
   render() {
-    const { articles } = this.state;
-    return (
+    const { articles, isLoaded } = this.state;
+    return isLoaded ? (
       <div>
         {articles.map(article => {
           return <ArticleById article={article} key={article.article_id} />;
         })}
       </div>
+    ) : (
+      <p>Loading...</p>
     );
   }
 }

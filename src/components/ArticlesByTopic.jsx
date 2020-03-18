@@ -3,7 +3,7 @@ import { GetArticlesByTopic } from "../API";
 import ArticleById from "./ArticleCards";
 
 class ArticlesByTopic extends Component {
-  state = { articles: [], isLoading: false };
+  state = { articles: [], isLoaded: false };
 
   componentDidMount() {
     this.fetchArticlesByTopic(this.props.topic);
@@ -11,18 +11,26 @@ class ArticlesByTopic extends Component {
 
   fetchArticlesByTopic = topic => {
     GetArticlesByTopic(topic).then(({ data }) => {
-      this.setState({ articles: data.articles });
+      this.setState(currentState => {
+        return {
+          ...currentState,
+          articles: data.articles,
+          isLoaded: true
+        };
+      });
     });
   };
 
   render() {
-    const { articles } = this.state;
-    return (
+    const { articles, isLoaded } = this.state;
+    return isLoaded ? (
       <>
         {articles.map(article => {
           return <ArticleById article={article} key={article.article_id} />;
         })}
       </>
+    ) : (
+      <p>Loading...</p>
     );
   }
 }

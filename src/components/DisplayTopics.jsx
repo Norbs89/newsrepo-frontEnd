@@ -13,7 +13,8 @@ class DisplayTopics extends React.Component {
       coding: coding,
       cooking: cooking,
       football: football
-    }
+    },
+    isLoaded: false
   };
 
   componentDidMount() {
@@ -23,7 +24,13 @@ class DisplayTopics extends React.Component {
   fetchTopics = () => {
     AllTopicsRequest()
       .then(({ data }) => {
-        this.setState({ topics: data.topics });
+        this.setState(currentState => {
+          return {
+            ...currentState,
+            topics: data.topics,
+            isLoaded: true
+          };
+        });
       })
       .catch(err => {
         console.dir(err);
@@ -31,8 +38,8 @@ class DisplayTopics extends React.Component {
   };
 
   render() {
-    const { topics } = this.state;
-    return (
+    const { topics, isLoaded } = this.state;
+    return isLoaded ? (
       <Container className="topic-container">
         <Row className="topics-row">
           {topics.map(topic => {
@@ -54,6 +61,8 @@ class DisplayTopics extends React.Component {
           })}
         </Row>
       </Container>
+    ) : (
+      <p>Loading...</p>
     );
   }
 }

@@ -34,19 +34,10 @@ const PostCommentRequest = (URI, user, body) => {
   return axios.post(`${baseURL}${URI}`, { username: user, body: body });
 };
 
-const patchVotesOnComments = (comment_id, vote) => {
+const patchVotes = (id, vote, url) => {
   console.log("vote updated");
-  return axios.patch(`${baseURL}/comments/${comment_id}`, { inc_votes: vote });
+  return axios.patch(`${baseURL}/${url}/${id}`, { inc_votes: vote });
 };
-
-// {
-//   params: query
-// }
-
-// query {
-// topic: ;'coding',
-// sortBy:
-// }
 
 export {
   AllArticlesRequest,
@@ -55,5 +46,5 @@ export {
   GetArticlesByTopic,
   GetCommentsByArticleId,
   PostCommentRequest,
-  patchVotesOnComments
+  patchVotes
 };

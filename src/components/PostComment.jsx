@@ -3,13 +3,14 @@ import { Form } from "react-bootstrap";
 import { PostCommentRequest } from "../API";
 
 class PostComment extends Component {
-  state = { body: "" };
+  state = { body: "", isPosted: false };
 
   handleInput = value => {
     this.setState(currentState => {
       return {
         ...currentState,
-        body: value
+        body: value,
+        isPosted: false
       };
     });
   };
@@ -20,13 +21,14 @@ class PostComment extends Component {
     PostCommentRequest(URI, currentUser, this.state.body).then(res => {
       commentPosted();
       this.setState({
-        body: ""
+        body: "",
+        isPosted: true
       });
     });
   };
 
   render() {
-    const { body } = this.state;
+    const { body, isPosted } = this.state;
     return (
       <>
         <Form onSubmit={this.handleSubmit}>
@@ -41,6 +43,7 @@ class PostComment extends Component {
               required
             />
             <button type="submit">Post a comment</button>
+            {isPosted && <p>Your comment has been posted!</p>}
           </Form.Group>
         </Form>
       </>

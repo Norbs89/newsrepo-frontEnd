@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { patchVotesOnComments } from "../API";
+import { patchVotes } from "../API";
 
-class CommentVoter extends Component {
+class Voter extends Component {
   state = { addedVote: 0, votedUp: false, votedDown: false };
 
   addVote = number => {
-    const { comment_id } = this.props;
-    patchVotesOnComments(comment_id, number);
+    const { id, url } = this.props;
+    patchVotes(id, number, url);
     this.setState(currentState => {
       return { ...currentState, addedVote: currentState.addedVote + number };
     });
@@ -53,4 +53,4 @@ class CommentVoter extends Component {
   }
 }
 
-export default CommentVoter;
+export default Voter;
