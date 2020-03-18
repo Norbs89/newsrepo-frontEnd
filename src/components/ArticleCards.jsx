@@ -2,14 +2,24 @@ import React, { Component } from "react";
 import { Accordion, Card, Container } from "react-bootstrap";
 import { ArticleByIdRequest } from "../API";
 import { Link } from "@reach/router";
+import ErrorHandling from "./ErrorHandling";
 
 class ArticleById extends Component {
-  state = { article: [], isLoaded: false };
+  state = { article: [], isLoaded: false, error: null };
 
   fetchArticleById = article_id => {
-    ArticleByIdRequest(article_id).then(res => {
-      this.setState({ article: res.data.article, isLoaded: true });
-    });
+    ArticleByIdRequest(article_id)
+      .then(res => {
+        this.setState({ article: res.data.article, isLoaded: true });
+      })
+      .catch(err => {
+        this.setState({
+          error: {
+            status: err.response.status,
+            msg: err.response.msg
+          }
+        });
+      });
   };
 
   handleClick = article_id => {
@@ -23,8 +33,10 @@ class ArticleById extends Component {
   };
 
   render() {
-    const { article } = this.state;
-
+    const { article, error } = this.state;
+    if (error !== null) {
+      return <ErrorHandling status={error.status} msg={error.msg} />;
+    }
     return (
       <Container key={this.props.article.article_id}>
         <Accordion className="article-card">
