@@ -24,11 +24,11 @@ class ArticlesByTopic extends Component {
   render() {
     const { articles, isLoaded } = this.state;
     return isLoaded ? (
-      <>
+      <div className="topic-article-page">
         {articles.map(article => {
           return <ArticleById article={article} key={article.article_id} />;
         })}
-      </>
+      </div>
     ) : (
       <p>Loading...</p>
     );

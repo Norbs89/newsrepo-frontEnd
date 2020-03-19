@@ -1,5 +1,5 @@
 import React from "react";
-import Container from "react-bootstrap/Container";
+import { Container, Row, Col } from "react-bootstrap";
 import DisplayTopics from "./DisplayTopics";
 
 const HomePage = () => {
@@ -9,13 +9,20 @@ const HomePage = () => {
         <p>NC News</p>
       </header>
       <Container>
-        <section className="intro-text">
-          Built from the ground up - a front end website to my very own hosted
-          API.
-        </section>
-        <section>
+        <Row>
+          <Col className="intro-text" sm>
+            Built from the ground up - a front end website to my very own hosted
+            API.
+          </Col>
+        </Row>
+        <Row>
+          <Col className="topic-intro" sm>
+            Click on any of these topics to see their articles:
+          </Col>
+        </Row>
+        <Row>
           <DisplayTopics />
-        </section>
+        </Row>
       </Container>
     </div>
   );

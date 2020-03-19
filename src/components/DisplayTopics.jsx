@@ -1,9 +1,9 @@
 import React from "react";
 import { AllTopicsRequest } from "../API";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import coding from "../images/coding.jpg";
-import cooking from "../images/cooking.jpg";
-import football from "../images/football.jpg";
+import coding from "../images/coding.png";
+import cooking from "../images/cooking.png";
+import football from "../images/football.png";
 import { Link } from "@reach/router";
 
 class DisplayTopics extends React.Component {
@@ -44,18 +44,17 @@ class DisplayTopics extends React.Component {
         <Row className="topics-row">
           {topics.map(topic => {
             return (
-              <Col key={topic.slug} className="topic-card">
+              <Col key={topic.slug} className="topic-card" md>
                 <Link to={`/topic/${topic.slug}`}>
                   <Card className="bg-dark text-white">
                     <Card.Img
                       src={this.state.images[topic.slug]}
                       className="topic-img"
                     />
-                    <Card.ImgOverlay className="card-allText">
-                      <Card.Title className="cardText">{topic.slug}</Card.Title>
-                      <Card.Text className="cardText">
-                        {topic.description}
-                      </Card.Text>
+                    <Card.ImgOverlay className="card-all-text">
+                      <Card.Title className="card-title">
+                        {topic.slug}
+                      </Card.Title>
                     </Card.ImgOverlay>
                   </Card>
                 </Link>

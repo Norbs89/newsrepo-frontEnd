@@ -1,13 +1,33 @@
-.App {
+.homePage-main-div,
+.topic-article-page,
+.App,
+.all-articles,
+.comments-page,
+.bg-custom {
   background-color: #2d3142;
+}
+
+.topic-intro,
+.article-sorter,
+.nav-text {
+  color: #d0cfcf !important;
+  font-family: "Nunito", sans-serif;
+}
+
+.card-all-text,
+header p {
+  font-family: "Permanent Marker", cursive;
+  color: #e6af2e;
+  text-shadow: 0 0 5px #080708, 0 0 10px #080708, 0 0 15px #080708,
+    0 0 20px #2d3142, 0 0 30px #2d3142, 0 0 40px #2d3142;
+}
+
+.App {
+  height: 100vh;
 }
 
 .navbar {
   box-shadow: 0 8px 6px -6px black;
-}
-
-.bg-custom {
-  background-color: #2d3142;
 }
 
 header {
@@ -23,11 +43,6 @@ header p {
   padding-top: 35vh;
   margin: auto;
   font-size: 6rem;
-  font-family: "Permanent Marker", cursive;
-  color: #e6af2e;
-  text-shadow: 0 0 5px #080708, 0 0 10px #080708, 0 0 15px #080708,
-    0 0 20px #2d3142, 0 0 30px #2d3142, 0 0 40px #2d3142, 0 0 55px #2d3142,
-    0 0 75px #2d3142;
 }
 
 .brand {
@@ -36,25 +51,18 @@ header p {
 }
 
 .nav-text {
-  color: #d0cfcf !important;
   text-decoration: none !important;
-  font-family: "Nunito", sans-serif;
 }
 
 .intro-text {
-  height: 40vh;
   text-align: center;
   padding-top: 10vh;
+  padding-bottom: 10vh;
   font-size: 3rem;
   color: #d0cfcf;
   font-family: "Righteous", cursive;
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
     0px 18px 23px rgba(0, 0, 0, 0.1);
-}
-
-.cardText {
-  color: black;
-  background: white;
 }
 
 .topics-row {
@@ -69,14 +77,30 @@ header p {
   padding-top: 5%;
 }
 
-.topic-card {
-  border: 5px solid white;
-}
-
 .article-sorter {
   display: flex;
-  justify-content: flex-start;
   align-items: center;
-  color: #d0cfcf;
-  font-family: "Nunito", sans-serif;
+  justify-content: flex-start;
+}
+
+.topic-img {
+  box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0, 0, 0, 0);
+}
+
+.card-all-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.topic-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.card-title {
+  font-size: 3rem !important;
 }

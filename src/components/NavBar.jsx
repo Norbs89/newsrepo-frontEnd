@@ -13,10 +13,11 @@ class DisplayNavBar extends React.Component {
 
   render() {
     return (
-      <Navbar bg="custom" variant="dark" sticky="top">
+      <Navbar bg="custom" variant="dark" sticky="top" expand="md">
         <Link to="/">
           <Navbar.Brand className="brand">NC-News</Navbar.Brand>
         </Link>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Text>
           <Link to="/articles" className="nav-text">
             All Articles

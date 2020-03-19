@@ -68,7 +68,7 @@ class CommentsByArticleId extends Component {
     const { article, comments, isLoaded } = this.state;
 
     return isLoaded ? (
-      <div>
+      <div className={"comments-page"}>
         <Container>
           <Card>
             <Card.Header>{article.title}</Card.Header>
