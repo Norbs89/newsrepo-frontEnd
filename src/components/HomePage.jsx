@@ -5,7 +5,9 @@ import DisplayTopics from "./DisplayTopics";
 const HomePage = () => {
   return (
     <div className="homePage-main-div">
-      <header>this is the header</header>
+      <header>
+        <p>NC News</p>
+      </header>
       <Container>
         <section className="intro-text">
           Built from the ground up - a front end website to my very own hosted

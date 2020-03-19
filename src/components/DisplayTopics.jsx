@@ -44,10 +44,13 @@ class DisplayTopics extends React.Component {
         <Row className="topics-row">
           {topics.map(topic => {
             return (
-              <Col key={topic.slug}>
+              <Col key={topic.slug} className="topic-card">
                 <Link to={`/topic/${topic.slug}`}>
                   <Card className="bg-dark text-white">
-                    <Card.Img src={this.state.images[topic.slug]} />
+                    <Card.Img
+                      src={this.state.images[topic.slug]}
+                      className="topic-img"
+                    />
                     <Card.ImgOverlay className="card-allText">
                       <Card.Title className="cardText">{topic.slug}</Card.Title>
                       <Card.Text className="cardText">

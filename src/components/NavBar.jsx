@@ -13,15 +13,17 @@ class DisplayNavBar extends React.Component {
 
   render() {
     return (
-      <Navbar bg="dark" variant="dark" sticky="top">
+      <Navbar bg="custom" variant="dark" sticky="top">
         <Link to="/">
-          <Navbar.Brand>NC-News</Navbar.Brand>
+          <Navbar.Brand className="brand">NC-News</Navbar.Brand>
         </Link>
         <Navbar.Text>
-          <Link to="/articles">All Articles</Link>
+          <Link to="/articles" className="nav-text">
+            All Articles
+          </Link>
         </Navbar.Text>
         <Navbar.Collapse className="justify-content-end">
-          <Navbar.Text>Signed in as: </Navbar.Text>
+          <Navbar.Text className="nav-text">Signed in as: </Navbar.Text>
           <UserChoice
             selectedUser={this.state.selectedUser}
             handleChange={this.handleChange}

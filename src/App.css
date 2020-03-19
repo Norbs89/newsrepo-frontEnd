@@ -1,12 +1,55 @@
+.App {
+  background-color: #2d3142;
+}
+
+.navbar {
+  box-shadow: 0 8px 6px -6px black;
+}
+
+.bg-custom {
+  background-color: #2d3142;
+}
+
 header {
   background-image: url("./images/ncNewsBckgrnd.png");
-  height: 100vh;
+  height: 90vh;
   background-size: cover;
   background-position: center;
+  box-shadow: 0 8px 6px -6px black;
+  text-align: center;
+}
+
+header p {
+  padding-top: 35vh;
+  margin: auto;
+  font-size: 6rem;
+  font-family: "Permanent Marker", cursive;
+  color: #e6af2e;
+  text-shadow: 0 0 5px #080708, 0 0 10px #080708, 0 0 15px #080708,
+    0 0 20px #2d3142, 0 0 30px #2d3142, 0 0 40px #2d3142, 0 0 55px #2d3142,
+    0 0 75px #2d3142;
+}
+
+.brand {
+  font-family: "Permanent Marker", cursive;
+  color: #d0cfcf !important;
+}
+
+.nav-text {
+  color: #d0cfcf !important;
+  text-decoration: none !important;
+  font-family: "Nunito", sans-serif;
 }
 
 .intro-text {
   height: 40vh;
+  text-align: center;
+  padding-top: 10vh;
+  font-size: 3rem;
+  color: #d0cfcf;
+  font-family: "Righteous", cursive;
+  text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
 }
 
 .cardText {
@@ -20,4 +63,20 @@ header {
 
 .article-card {
   padding: 10px 0;
+}
+
+.all-articles {
+  padding-top: 5%;
+}
+
+.topic-card {
+  border: 5px solid white;
+}
+
+.article-sorter {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #d0cfcf;
+  font-family: "Nunito", sans-serif;
 }
