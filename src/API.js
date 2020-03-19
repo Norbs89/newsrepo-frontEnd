@@ -2,12 +2,8 @@ import axios from "axios";
 
 const baseURL = "https://nc-news-hosting-app.herokuapp.com/api";
 
-const AllArticlesRequest = query => {
-  return axios.get(`${baseURL}/articles`, {
-    params: {
-      topic: query
-    }
-  });
+const AllArticlesRequest = () => {
+  return axios.get(`${baseURL}/articles`, {});
 };
 
 const ArticleByIdRequest = article_id => {

@@ -9,17 +9,20 @@ import ArticlesByTopic from "./components/ArticlesByTopic";
 import CommentsByArticleId from "./components/CommentsByArticle";
 import ErrorHandling from "./components/ErrorHandling";
 
-//turn this into class, have a hardcoded user here for now to be able to post a comment//
 class App extends React.Component {
   state = { currentUser: "jessjelly" };
 
-  updateUser = () => {};
+  updateUser = user => {
+    this.setState(currentState => {
+      return { ...currentState, currentUser: user };
+    });
+  };
 
   render() {
     const { currentUser } = this.state;
     return (
       <div className="App">
-        <DisplayNavBar currentUser={currentUser} />
+        <DisplayNavBar currentUser={currentUser} updateUser={this.updateUser} />
         <Router>
           <HomePage path="/" currentUser={currentUser} />
           <DisplayAllArticles path="/articles" currentUser={currentUser} />

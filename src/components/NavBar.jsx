@@ -1,25 +1,35 @@
 import React from "react";
-import Navbar from "react-bootstrap/Navbar";
+import { Navbar } from "react-bootstrap";
 import { Link } from "@reach/router";
+import UserChoice from "./UserChoice";
 
-const DisplayNavBar = props => {
-  // function onSelect() {
-  //   props.updateUser(value)
-  // }
+class DisplayNavBar extends React.Component {
+  state = { selectedUser: "jessjelly" };
 
-  return (
-    <Navbar bg="dark" variant="dark" sticky="top">
-      <Link to="/">
-        <Navbar.Brand>NC-News</Navbar.Brand>
-      </Link>
-      <Navbar.Text>
-        <Link to="/articles">All Articles</Link>
-      </Navbar.Text>
-      <Navbar.Collapse className="justify-content-end">
-        <Navbar.Text>Signed in as: {props.currentUser}</Navbar.Text>
-      </Navbar.Collapse>
-    </Navbar>
-  );
-};
+  handleChange = event => {
+    this.setState({ selectedUser: event.target.value });
+    this.props.updateUser(event.target.value);
+  };
+
+  render() {
+    return (
+      <Navbar bg="dark" variant="dark" sticky="top">
+        <Link to="/">
+          <Navbar.Brand>NC-News</Navbar.Brand>
+        </Link>
+        <Navbar.Text>
+          <Link to="/articles">All Articles</Link>
+        </Navbar.Text>
+        <Navbar.Collapse className="justify-content-end">
+          <Navbar.Text>Signed in as: </Navbar.Text>
+          <UserChoice
+            selectedUser={this.state.selectedUser}
+            handleChange={this.handleChange}
+          />
+        </Navbar.Collapse>
+      </Navbar>
+    );
+  }
+}
 
 export default DisplayNavBar;
