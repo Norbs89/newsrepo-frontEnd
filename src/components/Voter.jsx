@@ -29,7 +29,7 @@ class Voter extends Component {
     const { votes } = this.props;
     const { addedVote, votedDown, votedUp } = this.state;
     return (
-      <Container>
+      <Container className="votes-container">
         <Row className="vote-btn-row">
           <Col className="vote-btn-col" md={{ span: 4, offset: 4 }}>
             <label className="voter-text">Votes:</label>

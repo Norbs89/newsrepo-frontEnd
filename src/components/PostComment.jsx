@@ -42,7 +42,9 @@ class PostComment extends Component {
               value={body}
               required
             />
-            <button type="submit">Post a comment</button>
+            <button type="submit" className="submit-comment-btn">
+              Post a comment
+            </button>
             {isPosted && <p>Your comment has been posted!</p>}
           </Form.Group>
         </Form>

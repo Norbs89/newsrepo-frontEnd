@@ -14,16 +14,17 @@ const CommentCards = props => {
         <br />
         <Card.Text>{comment.body}</Card.Text>
         <br />
-        <Voter votes={comment.votes} id={comment.comment_id} url={"comments"} />
         {user === comment.author && (
           <button
+            className="delete-comment-btn"
             onClick={e => {
               deleteComment(comment.comment_id);
             }}
           >
-            Delete Comment
+            <i class="far fa-trash-alt"></i>
           </button>
         )}
+        <Voter votes={comment.votes} id={comment.comment_id} url={"comments"} />
       </ListGroup.Item>
     </>
   );

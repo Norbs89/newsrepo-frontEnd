@@ -76,6 +76,59 @@ header p {
   color: #080708;
 }
 
+.article-show-btn,
+.submit-comment-btn,
+.upvote {
+  box-shadow: 0px 1px 5px 1px #080700;
+  background: linear-gradient(to bottom, #e6af2e 5%, #fcd494 100%);
+  background-color: #e6af2e;
+  border-radius: 19px;
+  border: 1px solid #de9528;
+  display: inline-block;
+  cursor: pointer;
+  color: #333333;
+  padding: 4px 8px;
+  text-decoration: none;
+}
+.article-show-btn:hover,
+.submit-comment-btn:hover,
+.upvote:hover {
+  background: linear-gradient(to bottom, #fcd494 5%, #e6af2e 100%);
+  background-color: #fcd494;
+}
+.article-show-btn:active,
+.submit-comment-btn:active,
+.delete-comment-btn:active,
+.upvote:active,
+.downvote:active {
+  position: relative;
+  top: 1px;
+}
+
+.submit-comment-btn {
+  margin-top: 2%;
+}
+
+.delete-comment-btn,
+.downvote {
+  box-shadow: 0px 1px 5px 1px #080700;
+  background: linear-gradient(to bottom, #c42021 5%, #f52c3d 100%);
+  background-color: #c42021;
+  border-radius: 19px;
+  border: 1px solid #8f1414;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 4px 8px;
+  text-decoration: none;
+}
+
+.delete-comment-btn:hover,
+.downvote:hover {
+  background: linear-gradient(to bottom, #f52c3d 5%, #c42021 100%);
+  background-color: #f52c3d;
+}
+
 .article-card-surface,
 .article-comments-header {
   background-color: #00bfb2 !important;
@@ -132,41 +185,6 @@ header p {
 
 .card-title {
   font-size: 3rem !important;
-}
-
-.upvote,
-.downvote {
-  box-shadow: 0px 2px 8px 1px #020801;
-  border-radius: 14px;
-  display: inline-block;
-  cursor: pointer;
-  color: #ffffff;
-  font-family: Arial;
-  font-size: 17px;
-  padding: 2px 6px;
-  text-decoration: none;
-  text-shadow: 0px 1px 0px #0b2408;
-}
-.upvote:hover {
-  background-color: #f3d389;
-}
-.upvote:active,
-.downvote:active {
-  position: relative;
-  top: 1px;
-}
-
-.upvote {
-  background-color: #e6af2e;
-  border: 1px solid rgb(129, 96, 21);
-}
-.downvote {
-  background-color: #c42021;
-  border: 1px solid #460505;
-}
-
-.downvote:hover {
-  background-color: #eb3434;
 }
 
 .vote-btn-row,

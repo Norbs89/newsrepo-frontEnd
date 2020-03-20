@@ -46,6 +46,7 @@ class ArticleById extends Component {
               <p>TOPIC: {this.props.article.topic}</p>
               <p>TITLE: {this.props.article.title}</p>
               <button
+                className="article-show-btn"
                 onClick={() => {
                   this.handleClick(this.props.article.article_id);
                 }}
