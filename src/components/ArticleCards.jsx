@@ -60,14 +60,11 @@ class ArticleById extends Component {
                     <p>{article.body}</p>
                     <p>Author: {article.author}</p>
                     <p>Created at: {article.created_at}</p>
-                    <p>
-                      Votes:
-                      <Voter
-                        votes={article.votes}
-                        id={article.article_id}
-                        url={"articles"}
-                      />
-                    </p>
+                    <Voter
+                      votes={article.votes}
+                      id={article.article_id}
+                      url={"articles"}
+                    />
                     <p>Comments: {article.comment_count}</p>
                     <Link to={`/articles/${article.article_id}/comments`}>
                       Click to see comments

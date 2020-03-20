@@ -104,3 +104,51 @@ header p {
 .card-title {
   font-size: 3rem !important;
 }
+
+.upvote,
+.downvote {
+  box-shadow: 0px 2px 8px 1px #020801;
+  border-radius: 14px;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff;
+  font-family: Arial;
+  font-size: 17px;
+  padding: 2px 6px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #0b2408;
+}
+.upvote:hover {
+  background-color: #f3d389;
+}
+.upvote:active,
+.downvote:active {
+  position: relative;
+  top: 1px;
+}
+
+.upvote {
+  background-color: #e6af2e;
+  border: 1px solid rgb(129, 96, 21);
+}
+.downvote {
+  background-color: #c42021;
+  border: 1px solid #460505;
+}
+
+.downvote:hover {
+  background-color: #eb3434;
+}
+
+.vote-btn-row,
+.vote-btn-col {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.vote-btn-row {
+  align-items: baseline;
+}
+.voter-text {
+  padding: 0px 10px;
+}

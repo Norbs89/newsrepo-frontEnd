@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { patchVotes } from "../API";
+import { Container, Row, Col } from "react-bootstrap";
 
 class Voter extends Component {
   state = { addedVote: 0, votedUp: false, votedDown: false };
@@ -28,27 +29,34 @@ class Voter extends Component {
     const { votes } = this.props;
     const { addedVote, votedDown, votedUp } = this.state;
     return (
-      <>
-        <button
-          onClick={e => {
-            this.addVote(1);
-            this.voteUpSwitch();
-          }}
-          disabled={votedUp}
-        >
-          up
-        </button>
-        {votes + addedVote}
-        <button
-          onClick={e => {
-            this.addVote(-1);
-            this.voteDownSwitch();
-          }}
-          disabled={votedDown}
-        >
-          down
-        </button>
-      </>
+      <Container>
+        <Row className="vote-btn-row">
+          <Col className="vote-btn-col" md={{ span: 4, offset: 4 }}>
+            <label className="voter-text">Votes:</label>
+            <button
+              className="upvote"
+              onClick={e => {
+                this.addVote(1);
+                this.voteUpSwitch();
+              }}
+              disabled={votedUp}
+            >
+              &#10004;
+            </button>
+            <span className="voter-text">{votes + addedVote}</span>
+            <button
+              className="downvote"
+              onClick={e => {
+                this.addVote(-1);
+                this.voteDownSwitch();
+              }}
+              disabled={votedDown}
+            >
+              &#10008;
+            </button>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
