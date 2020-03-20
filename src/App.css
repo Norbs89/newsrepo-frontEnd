@@ -26,7 +26,9 @@ header p {
   height: 100vh;
 }
 
-.navbar {
+.navbar,
+.article-card-surface,
+header {
   box-shadow: 0 8px 6px -6px black;
 }
 
@@ -35,7 +37,6 @@ header {
   height: 90vh;
   background-size: cover;
   background-position: center;
-  box-shadow: 0 8px 6px -6px black;
   text-align: center;
 }
 
@@ -70,10 +71,25 @@ header p {
 }
 
 .article-card {
+  font-family: "Nunito", sans-serif;
   padding: 10px 0;
+  color: #080708;
 }
 
-.all-articles {
+.article-card-surface,
+.article-comments-header {
+  background-color: #00bfb2 !important;
+}
+
+.article-card-body,
+.article-comments-page,
+.comment-list {
+  background-color: #d0cfcf !important;
+}
+
+.all-articles,
+.comments-page,
+.topic-article-page {
   padding-top: 5%;
 }
 
@@ -81,6 +97,19 @@ header p {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+}
+
+.article-comments-page {
+  font-family: "Nunito", sans-serif;
+  color: #080708;
+}
+
+.post-comment {
+  padding: 0 7.5%;
+}
+
+.comment-list {
+  padding: 2% 7% !important;
 }
 
 .topic-img {

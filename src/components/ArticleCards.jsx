@@ -41,7 +41,7 @@ class ArticleById extends Component {
     return (
       <Container key={this.props.article.article_id}>
         <Accordion className="article-card">
-          <Card>
+          <Card className="article-card-surface">
             <Accordion.Toggle as={Card.Header} eventKey="0">
               <p>TOPIC: {this.props.article.topic}</p>
               <p>TITLE: {this.props.article.title}</p>
@@ -54,7 +54,7 @@ class ArticleById extends Component {
               </button>
             </Accordion.Toggle>
             <Accordion.Collapse eventKey="0">
-              <Card.Body>
+              <Card.Body className="article-card-body">
                 {isLoaded ? (
                   <>
                     <p>{article.body}</p>

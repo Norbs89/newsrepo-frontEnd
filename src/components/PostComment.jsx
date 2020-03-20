@@ -31,7 +31,7 @@ class PostComment extends Component {
     const { body, isPosted } = this.state;
     return (
       <>
-        <Form onSubmit={this.handleSubmit}>
+        <Form onSubmit={this.handleSubmit} className="post-comment">
           <Form.Group>
             <Form.Label>Your Comments:</Form.Label>
             <Form.Control

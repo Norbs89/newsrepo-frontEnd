@@ -6,7 +6,7 @@ const CommentCards = props => {
   const { comment, user, deleteComment } = props;
   return (
     <>
-      <ListGroup.Item>
+      <ListGroup.Item className="comment-list">
         <Card.Subtitle className="text-muted">
           &#9998;
           {comment.author} &#8226; {comment.created_at}
