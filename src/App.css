@@ -76,6 +76,31 @@ header p {
   color: #080708;
 }
 
+.article-card-topic {
+  font-family: "Permanent Marker", cursive;
+  font-size: 1.2rem;
+}
+
+.article-card-title,
+.article-comments-header,
+.comments-intro {
+  font-size: 1.2rem;
+  font-family: "Quicksand", sans-serif;
+  font-weight: 600;
+}
+
+.article-comments-header {
+  text-align: center;
+}
+
+.article-comments-text {
+  padding: 0 7%;
+}
+
+.article-card-author {
+  padding-bottom: 2%;
+}
+
 .article-show-btn,
 .submit-comment-btn,
 .upvote {
@@ -161,7 +186,8 @@ header p {
   padding: 0 7.5%;
 }
 
-.comment-list {
+.comment-list,
+.comments-intro {
   padding: 2% 7% !important;
 }
 
@@ -192,10 +218,17 @@ header p {
   display: flex;
   justify-content: flex-end;
 }
+.votes-container {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
 
 .vote-btn-row {
   align-items: baseline;
 }
-.voter-text {
+
+.voter-text,
+.article-card-text {
   padding: 0px 10px;
 }

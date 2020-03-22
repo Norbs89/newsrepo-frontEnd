@@ -1,9 +1,9 @@
 import React from "react";
 import { AllTopicsRequest } from "../API";
 import { Card, Container, Row, Col } from "react-bootstrap";
-import coding from "../images/coding.png";
-import cooking from "../images/cooking.png";
-import football from "../images/football.png";
+import coding from "../images/coding.jpg";
+import cooking from "../images/cooking.jpg";
+import football from "../images/football.jpg";
 import { Link } from "@reach/router";
 
 class DisplayTopics extends React.Component {

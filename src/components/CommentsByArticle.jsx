@@ -7,6 +7,8 @@ import {
 import { Card, Container, ListGroup } from "react-bootstrap";
 import CommentCards from "./CommentCards";
 import PostComment from "./PostComment";
+import Voter from "./Voter";
+import moment from "moment";
 
 //if isPosted true, rerender comments on cDU
 class CommentsByArticleId extends Component {
@@ -78,10 +80,15 @@ class CommentsByArticleId extends Component {
               {article.body}
             </Card.Text>
             <Card.Text className="article-comments-text">
-              {article.votes}
+              Created at: {moment(article.created_at).format("LLL")}
+              <Voter
+                votes={article.votes}
+                id={article.article_id}
+                url={"articless"}
+              />
             </Card.Text>
             <br />
-            <Card.Title>Comments:</Card.Title>
+            <Card.Title className="comments-intro">Comments:</Card.Title>
             <PostComment
               currentUser={this.props.currentUser}
               URI={this.props.uri}

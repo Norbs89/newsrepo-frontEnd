@@ -1,12 +1,25 @@
 import React, { Component } from "react";
-import { Accordion, Card, Container } from "react-bootstrap";
+import { Accordion, Card, Container, Media } from "react-bootstrap";
 import { ArticleByIdRequest } from "../API";
 import { Link } from "@reach/router";
 import ErrorHandling from "./ErrorHandling";
 import Voter from "./Voter";
+import coding from "../images/coding.jpg";
+import cooking from "../images/cooking.jpg";
+import football from "../images/football.jpg";
+import moment from "moment";
 
 class ArticleById extends Component {
-  state = { article: null, isLoaded: false, error: null };
+  state = {
+    article: null,
+    isLoaded: false,
+    error: null,
+    images: {
+      coding: coding,
+      cooking: cooking,
+      football: football
+    }
+  };
 
   fetchArticleById = article_id => {
     ArticleByIdRequest(article_id)
@@ -34,21 +47,37 @@ class ArticleById extends Component {
   };
 
   render() {
-    const { article, error, isLoaded } = this.state;
+    const { article, error, isLoaded, images } = this.state;
+    const { article_id, topic, title, author } = this.props.article;
     if (error !== null) {
       return <ErrorHandling status={error.status} msg={error.msg} />;
     }
     return (
-      <Container key={this.props.article.article_id}>
+      <Container key={article_id}>
         <Accordion className="article-card">
           <Card className="article-card-surface">
-            <Accordion.Toggle as={Card.Header} eventKey="0">
-              <p>TOPIC: {this.props.article.topic}</p>
-              <p>TITLE: {this.props.article.title}</p>
+            <Accordion.Toggle
+              as={Card.Header}
+              eventKey="0"
+              onClick={() => {
+                this.handleClick(article_id);
+              }}
+            >
+              <Media>
+                <img width={80} height={60} src={images[topic]} alt={[topic]} />
+                <Media.Body className="article-card-text">
+                  <p className="article-card-topic">{topic}</p>
+                  <p className="article-card-title">{title}</p>
+                  <Card.Subtitle className="text-muted article-card-author">
+                    &#9998;
+                    {author}
+                  </Card.Subtitle>
+                </Media.Body>
+              </Media>
               <button
                 className="article-show-btn"
                 onClick={() => {
-                  this.handleClick(this.props.article.article_id);
+                  this.handleClick(article_id);
                 }}
               >
                 Click to read article
@@ -59,8 +88,9 @@ class ArticleById extends Component {
                 {isLoaded ? (
                   <>
                     <p>{article.body}</p>
-                    <p>Author: {article.author}</p>
-                    <p>Created at: {article.created_at}</p>
+                    <p>
+                      Created at: {moment(article.created_at).format("LLL")}
+                    </p>
                     <Voter
                       votes={article.votes}
                       id={article.article_id}
